@@ -1,0 +1,6 @@
+.btn {
+     cursor: pointer;
+}
+.btn:hover {
+     color: #6c757d;
+}

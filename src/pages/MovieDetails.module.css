@@ -1,0 +1,8 @@
+.movie-details-container {
+     padding-top: 70px;
+}
+@media (max-width: 767px) {
+     .movie-details-container {
+          padding-top: 45px;
+     }
+}

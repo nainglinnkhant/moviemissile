@@ -1,0 +1,24 @@
+.movies-container {
+     padding-top: 55px;
+}
+@media (max-width: 576px) {
+     .movies-container {
+          padding-top: 40px;
+     }
+}
+@media (min-width: 576px) and (max-width: 991px) {
+     .movies-container {
+          padding-top: 44px;
+     }
+}
+.pagination {
+     margin-top: -20px;
+     margin-bottom: 35px;
+     padding-left: 0;
+}
+@media (min-width: 992px) {
+     .pagination {
+          margin-top: -15px;
+          margin-bottom: 38px;
+     }
+}

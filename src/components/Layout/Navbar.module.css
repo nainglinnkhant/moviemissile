@@ -1,0 +1,101 @@
+.navbar {
+     padding-top: 0.125rem;
+     padding-bottom: 0.125rem;
+     color: #353535;
+     background: #ffffff;
+}
+.navbar .btn-logo {
+     cursor: pointer;
+     color:  #353535;
+}
+.navbar .btn-moviedb {
+     cursor: pointer;
+}
+.navbar .btn-toggle {
+     padding: 0;
+     margin-top: 3px;
+}
+.btn-search {
+     position: absolute;
+     top: 45px;
+     right: 0;
+}
+.search-form {
+     position: relative;
+     padding-top: 45px;
+     margin-bottom: -45px;
+     animation: dropout 0.2s ease-in-out forwards;
+}
+@keyframes dropout {
+     0% {
+          opacity: 0;
+          transform: translateY(-100%);
+     }
+     50% {
+          opacity: 0.5;
+          transform: translateY(10%);
+     }
+     100% {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+.navbar form {
+     position: relative;
+}
+.navbar input {
+     width: 200px;
+     display: inline-block;
+     border-radius: 18px;
+     border-color: #757575 !important;
+     height: 33px;
+}
+.navbar .btn-search-nav {
+     position: absolute;
+     top: -2px;
+     right: 0;
+}
+.navbar .btn-search-nav i {
+     color: #353535;
+     line-height: 1;
+}
+.navbar .btn-user-profile {
+     padding: 0;
+     margin-left: 15px;
+}
+.navbar .btn-user-profile img {
+     width: 28px;
+     height: 28px;
+     border-radius: 100%;
+}
+.navbar li a, .navbar li p, .navbar li .name-item {
+     color: #6c757d;
+     font-size: 0.9rem;
+}
+.navbar li .name-item {
+     cursor: default;
+}
+.navbar li a:active, .navbar li p:active {
+     color: #1e2125;
+     background: #e9ecef;
+}
+.navbar .name-item {
+     padding: .25rem 1rem;
+}
+.dropdown-menu[data-bs-popper] {
+     left: -475%;
+     margin-top: .75rem;
+}
+.dropdown-menu::after {
+     display: block;
+     margin: 0 auto;
+     position: absolute;
+     top: -7%;
+     left: 86%;
+     content: "";
+     width: 0;
+     height: 0;
+     border-right: 10px solid transparent;
+     border-left: 10px solid transparent;
+     border-bottom: 10px solid #ccc;
+}

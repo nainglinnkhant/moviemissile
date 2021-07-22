@@ -1,0 +1,75 @@
+.auth-container {
+     padding-top: 90px;
+     padding-bottom: 10px;
+}
+.auth-container h5 {
+     margin-bottom: 10px;
+}
+.form label {
+     font-size: 0.9rem;
+}
+.form input {
+     font-size: 0.9rem;
+     padding: 4px 6px;
+     margin-bottom: 5px;
+     height: 30px;
+}
+.form input:focus {
+     border-color: #ced4da;
+     box-shadow: none !important;
+}
+.invalid label {
+     color: #e61818;
+}
+.invalid input {
+     background: #fddddd;
+     border: 1px solid #e61818;
+}
+.invalid input:focus {
+     background: #fddddd;
+     border-color: #e61818;
+     box-shadow: none !important;
+}
+.form .error-message {
+     margin-bottom: 0;
+     font-size: 0.85rem;
+     color: #e61818;
+}
+.form button {
+     color: #01b4e4;
+     font-size: 0.9rem;
+     padding: 3px 15px;
+     margin-top: 15px;
+     background: #ffffff;
+     border: 1px solid #01b4e4;
+     border-radius: 25px;
+}
+.form button:disabled {
+     cursor: not-allowed;
+     color: #68d5f3;
+     border-color: #68d5f3;
+}
+.form button:focus {
+     outline: none;
+}
+.auth-switch {
+     font-size: 0.9rem;
+     margin-top: 15px;
+}
+.auth-switch span {
+     cursor: pointer;
+}
+.auth-switch span:hover {
+     color: #01b4e4 !important;
+     text-decoration: underline !important;
+}
+@media (max-width: 576px) {
+     .auth-container {
+          padding-top: 60px;
+     }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+     .auth-container {
+          padding-top: 65px;
+     }
+}

@@ -1,0 +1,36 @@
+.movie-info .poster, .movie-info .poster img {
+     border-radius: 10px;
+}
+.btn-bookmark, .btn-favourite {
+     border: 1px solid #01b4e4;
+     width: 12.5rem;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     padding-top: 3px;
+     padding-bottom: 3px;
+     font-size: 0.9rem;
+     position: relative;
+}
+.btn-bookmark i, .btn-favourite i {
+     font-size: 0.8rem;
+}
+.btn-bookmark:hover, .btn-favourite:hover {
+     color: #ffffff;
+}
+.btn-bookmark::before, .btn-favourite::before {
+     content: '';
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background: #01b4e4;
+     z-index: -1;
+     width: 0;
+     height: 100%;
+     transition: all 0.6s ease;
+     opacity: 0;
+}
+.btn-bookmark:hover::before, .btn-favourite:hover::before {
+     width: 100%;
+     opacity: 1;
+}

@@ -1,0 +1,23 @@
+.card {
+     border-radius: 10px;
+     box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+     padding: 20px 30px;
+}
+.card img {
+     width: 60px;
+     height: 60px;
+     border-radius: 100%;
+}
+.card .date {
+     font-size: 0.95rem;
+}
+.card .rating {
+     font-size: 0.95rem;
+}
+.card .rating i {
+     font-size: 0.85rem;
+}
+.btn-more {
+     cursor: pointer;
+     text-decoration: underline;
+}

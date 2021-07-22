@@ -1,0 +1,23 @@
+.scroller {
+     overflow-x: scroll;
+     display: flex;
+     padding-left: 0;
+     padding-bottom: 10px;
+}
+.scroller li {
+     text-decoration: none;
+     min-width: 170px;
+     margin: 0 5px;
+     list-style-type: none;
+     text-overflow: ellipsis;
+}
+@media (max-width: 576px) {
+     .scroller li {
+          margin: 0 0;
+     }
+}
+@media (min-width: 576px) and (max-width: 1200px)  {
+     .scroller li {
+          margin: 0 10px;
+     }         
+}

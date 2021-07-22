@@ -1,0 +1,16 @@
+.reviews-container {
+     padding-top: 90px;
+     padding-bottom: 30px;
+}
+@media (max-width: 576px) {
+     .reviews-container {
+          padding-top: 65px;
+          padding-bottom: 25px;
+     }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+     .reviews-container {
+          padding-top: 70px;
+          padding-bottom: 25px;
+     }
+}

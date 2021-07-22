@@ -1,0 +1,14 @@
+.cast-container {
+     padding-top: 90px;
+     padding-bottom: 30px;
+}
+@media (max-width: 576px) {
+     .cast-container {
+          padding-top: 65px;
+     }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+     .cast-container {
+          padding-top: 70px;
+     }
+}

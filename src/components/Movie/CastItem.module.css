@@ -1,0 +1,32 @@
+.cast-item {
+     height: 100%;
+     text-decoration: none;
+     text-overflow: ellipsis;
+     font-size: 0.9rem;
+     border-radius: 5px;
+     box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+.cast-img {
+     height: 200px;
+     overflow: hidden;
+}
+.cast-item img, .cast-item object  {
+     width: 100%;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+@media (min-width: 360px) and (max-width: 400px) {
+     .cast-item {
+          margin: 5px;
+     }
+}
+@media (min-width: 400px) and (max-width: 575px) {
+     .cast-item {
+          margin: 10px;
+     }
+}
+@media (min-width: 1400px) {
+     .cast-item {
+          margin: 0 5px;
+     }    
+}

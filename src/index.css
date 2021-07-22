@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap');
+
+body {
+     margin: 0;
+     font-family: Karla, sans-serif;
+}
+
+footer {
+     background: #f3f4f6;
+     color: #353535;
+     text-align: center;
+     padding: 20px 0;
+     font-size: 0.95rem;
+}
+
+footer a {
+     text-decoration: none;
+     color: #353535;
+     font-weight: bold;
+}
+
+footer a:hover {
+     color: #01b4e4;
+}
+
+code {
+     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+          monospace;
+}
+
+.btn:focus, .form-control:focus {
+     box-shadow: none;
+}
+
+::-webkit-scrollbar {
+     width: 8px;
+     height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+     background: #D1D5DB;
+     border-radius: 5px;
+}
