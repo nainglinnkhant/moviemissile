@@ -17,6 +17,9 @@
 .card .rating i {
      font-size: 0.85rem;
 }
+.review-content {
+     word-break: break-all;
+}
 .btn-more {
      cursor: pointer;
      text-decoration: underline;

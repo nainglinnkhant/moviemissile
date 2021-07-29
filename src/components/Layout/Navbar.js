@@ -20,10 +20,6 @@ const Navbar = () => {
      const searchWordRef1 = useRef()
      const searchWordRef2 = useRef()
 
-     const clickMovieDBHandler = () => {
-          window.open("https://www.themoviedb.org/")
-     }
-
      const [showSearchbar, setShowSearchbar] = useState(false)
 
      const toggleSearchbarHandler = () => {
@@ -103,9 +99,14 @@ const Navbar = () => {
 
                          <span className="d-none d-md-block">Powered By</span>
 
-                         <span className={`${styles['btn-moviedb']} d-none d-md-block me-auto ms-4`} onClick={clickMovieDBHandler}>
+                         {/* eslint-disable-next-line */}
+                         <a 
+                              className={`${styles['btn-moviedb']} d-none d-md-block me-auto ms-4`} 
+                              href="https://www.themoviedb.org/"
+                              target="_blank"
+                         >
                               <MovieDBLogo />
-                         </span>
+                         </a>
 
                          <button
                               className={`btn d-block d-sm-none ms-auto me-2 ${styles['btn-toggle']}`}

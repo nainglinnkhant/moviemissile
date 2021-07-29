@@ -86,7 +86,8 @@ const Movies = () => {
                {!isLoading && !error && (
                     <footer>
                          The movie data are provided by
-                         <a href="https://www.themoviedb.org/"> The Movie DB</a>
+                         {/* eslint-disable-next-line */}
+                         <a href="https://www.themoviedb.org/" target="_blank"> The Movie DB</a>
                     </footer>
                )}
           </Fragment>

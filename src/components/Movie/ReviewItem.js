@@ -74,7 +74,7 @@ const ReviewItem = (props) => {
                          </div>
                     </div>
 
-                    <p className="mt-3 mb-0">
+                    <p className={`mt-3 mb-0 ${styles['review-content']}`}>
                          {content}
                          {review.content.length > 400 && (
                               <span 
