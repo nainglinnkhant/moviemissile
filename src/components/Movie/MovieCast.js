@@ -90,7 +90,7 @@ const Casts = (props) => {
                               <span className="fw-bold">Budget</span>
                          </div>
                          <div className="col-8">
-                              <span>{budget}</span>
+                              <span className={styles.number}>{budget}</span>
                          </div>
                     </div>
 
@@ -99,7 +99,7 @@ const Casts = (props) => {
                               <span className="fw-bold">Revenue</span>
                          </div>
                          <div className="col-8">
-                              <span>{revenue}</span>
+                              <span className={styles.number}>{revenue}</span>
                          </div>
                     </div>
                </div>

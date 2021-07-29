@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+.number {
+     font-family: 'Source Sans Pro', sans-serif;
+}
 .director {
      width: 200px;
      height: 50px;
