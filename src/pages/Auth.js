@@ -72,11 +72,11 @@ const Auth = () => {
 
      useEffect(() => {
           if(userId && uname) {
-               history.push('/movies')
+               history.replace('/movies')
           }
      }, [history, userId, uname])
 
-     const submitHandler = async (event) => {
+     const submitHandler = (event) => {
           event.preventDefault()
 
           sendAuthRequest(authenticate.bind(null, username, email, password, authMode))
@@ -88,107 +88,99 @@ const Auth = () => {
 
      return (
           <Fragment>
-               {isLoading && (
-                    <Dialog message={message} fixed />
-               )}
+               {isLoading && <Dialog message={message} fixed />}
 
                {error && <Dialog message={error} fixed={false} onClose={closeHandler} />}
 
-               {!isLoading && !error && (
-                    <div className={`container ${styles['auth-container']}`}>
-                         <div className="col-md-6 offset-md-3">
-                              <h5 className="fw-bold">{title}</h5>
+               <div className={`container ${styles['auth-container']}`}>
+                    <div className="col-md-6 offset-md-3">
+                         <h5 className="fw-bold">{title}</h5>
 
-                              <form onSubmit={submitHandler} className={styles.form}>
-                                   {authMode === 'Sign Up' && (
-                                        <div className={usernameClasses}>
-                                             <label htmlFor="username">Username</label>
-                                             <input
-                                                  type="text"
-                                                  id="username"
-                                                  className="form-control"
-                                                  value={username}
-                                                  onChange={usernameChangeHandler}
-                                                  onBlur={usernameBlurHandler}
-                                             />
-                                             {isUsernameInvalid && (
-                                                  <p className={styles['error-message']}>
-                                                       Please enter a valid username. (at least 3 characters).
-                                                  </p>
-                                             )}
-                                        </div>
-                                   )}
-
-                                   <div className={emailClasses}>
-                                        <label htmlFor="email">Email</label>
+                         <form onSubmit={submitHandler} className={styles.form}>
+                              {authMode === 'Sign Up' && (
+                                   <div className={usernameClasses}>
+                                        <label htmlFor="username">Username</label>
                                         <input
-                                             type="email"
-                                             id="email"
+                                             type="text"
+                                             id="username"
                                              className="form-control"
-                                             value={email}
-                                             onChange={emailChangeHandler}
-                                             onBlur={emailBlurHandler}
+                                             value={username}
+                                             onChange={usernameChangeHandler}
+                                             onBlur={usernameBlurHandler}
                                         />
-                                        {isEmailInvalid && (
+                                        {isUsernameInvalid && (
                                              <p className={styles['error-message']}>
-                                                  Please enter a valid email.
+                                                  Please enter a valid username. (at least 3 characters).
                                              </p>
                                         )}
                                    </div>
-
-                                   <div className={passwordClasses}>
-                                        <label htmlFor="password">Password</label>
-                                        <input
-                                             type="password"
-                                             id="password"
-                                             className="form-control"
-                                             value={password}
-                                             onChange={passwordChangeHandler}
-                                             onBlur={passwordBlurHandler}
-                                        />
-                                        {isPasswordInvalid && (
-                                             <p className={styles['error-message']}>
-                                                  Please enter a valid password. (at least 6 characters).
-                                             </p>
-                                        )}
-                                   </div>
-
-                                   {authMode === 'Sign Up' && (
-                                        <div className={confirmPasswordClasses}>
-                                             <label htmlFor="confirmPassword">Confirm Password</label>
-                                             <input
-                                                  type="password"
-                                                  id="confirmPassword"
-                                                  className="form-control"
-                                                  value={confirmPassword}
-                                                  onChange={confirmPasswordChangeHandler}
-                                                  onBlur={confirmPasswordBlurHandler}
-                                             />
-                                             {isConfirmPasswordInvalid && (
-                                                  <p className={styles['error-message']}>
-                                                       Passwords don't match.
-                                                  </p>
-                                             )}
-                                        </div>
-                                   )}
-
-                                   <button disabled={!isFormValid}>{authMode}</button>
-                              </form>
-
-                              {authMode === 'Login' && (
-                                   <p className={styles['auth-switch']}>
-                                        Don't have an account? <span onClick={switchAuthMode}>Sign Up</span>
-                                   </p>
                               )}
+
+                              <div className={emailClasses}>
+                                   <label htmlFor="email">Email</label>
+                                   <input
+                                        type="email"
+                                        id="email"
+                                        className="form-control"
+                                        value={email}
+                                        onChange={emailChangeHandler}
+                                        onBlur={emailBlurHandler}
+                                   />
+                                   {isEmailInvalid && (
+                                        <p className={styles['error-message']}>
+                                             Please enter a valid email.
+                                        </p>
+                                   )}
+                              </div>
+
+                              <div className={passwordClasses}>
+                                   <label htmlFor="password">Password</label>
+                                   <input
+                                        type="password"
+                                        id="password"
+                                        className="form-control"
+                                        value={password}
+                                        onChange={passwordChangeHandler}
+                                        onBlur={passwordBlurHandler}
+                                   />
+                                   {isPasswordInvalid && (
+                                        <p className={styles['error-message']}>
+                                             Please enter a valid password. (at least 6 characters).
+                                        </p>
+                                   )}
+                              </div>
 
                               {authMode === 'Sign Up' && (
-                                   <p className={styles['auth-switch']}>
-                                        Already have an account? <span onClick={switchAuthMode}>Login</span>
-                                   </p>
+                                   <div className={confirmPasswordClasses}>
+                                        <label htmlFor="confirmPassword">Confirm Password</label>
+                                        <input
+                                             type="password"
+                                             id="confirmPassword"
+                                             className="form-control"
+                                             value={confirmPassword}
+                                             onChange={confirmPasswordChangeHandler}
+                                             onBlur={confirmPasswordBlurHandler}
+                                        />
+                                        {isConfirmPasswordInvalid && (
+                                             <p className={styles['error-message']}>
+                                                  Passwords don't match.
+                                             </p>
+                                        )}
+                                   </div>
                               )}
-                         </div>
+
+                              <button disabled={!isFormValid}>{authMode}</button>
+                         </form>
+
+                         <p className={styles['auth-switch']}>
+                              {authMode === 'Login' ? `Don't have an account?` : `Already have an account?`}
+
+                              <span onClick={switchAuthMode} className="ms-1">
+                                   {authMode === 'Login' ? 'Sign Up' : 'Login'}
+                              </span>
+                         </p>
                     </div>
-               )}
+               </div>
           </Fragment>
      )
 }

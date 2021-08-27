@@ -24,7 +24,7 @@ const Dialog = (props) => {
 
                               {props.children}
 
-                              <button onClick={closeHandler}>Close</button>
+                              {!fixed && <button onClick={closeHandler}>Close</button>}
                          </dialog>
                     </Fragment>,
                     document.getElementById('root')

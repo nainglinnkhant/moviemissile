@@ -36,20 +36,14 @@ const Navbar = () => {
           dispatch(favouriteActions.clearFavourites())
 
           if(location.pathname.includes('watchlist') || location.pathname.includes('favourites')) {
-               history.push('/movies')
+               history.replace('/movies')
           }
      }
 
-     const searchHandler1 = (event) => {
+     const searchHandler = (event, searchWord) => {
           event.preventDefault()
 
-          history.push(`/search?query=${searchWordRef1.current.value}`)
-     }
-
-     const searchHandler2 = (event) => {
-          event.preventDefault()
-
-          history.push(`/search?query=${searchWordRef2.current.value}`)
+          history.push(`/search?query=${searchWord}`)
      }
      
      const userButton = (
@@ -116,7 +110,10 @@ const Navbar = () => {
                               {showSearchbar && <i className="fas fa-times fs-5"></i>}
                          </button>
 
-                         <form className="d-none d-sm-block ms-auto" onSubmit={searchHandler1}>
+                         <form 
+                              className="d-none d-sm-block ms-auto" 
+                              onSubmit={(e) => searchHandler(e, searchWordRef1.current.value)}
+                         >
                               <input 
                                    className="form-control" 
                                    placeholder="Search for a movie..." 
@@ -135,7 +132,10 @@ const Navbar = () => {
                </nav>
 
                {showSearchbar && (
-                    <form className={styles['search-form']} onSubmit={searchHandler2}>
+                    <form 
+                         className={styles['search-form']} 
+                         onSubmit={(e) => searchHandler(e, searchWordRef2.current.value)}
+                    >
                          <input 
                               className="form-control" 
                               placeholder="Search for a movie..." 
