@@ -27,8 +27,8 @@ const Navbar = () => {
      }
 
      const logoutHandler = () => {
-          localStorage.removeItem('userId')
-          localStorage.removeItem('username')
+          localStorage.removeItem('moviemissile-userId')
+          localStorage.removeItem('moviemissile-username')
 
           dispatch(authActions.logout())
           dispatch(authActions.clearUsername())

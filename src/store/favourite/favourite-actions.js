@@ -1,10 +1,12 @@
 import { sendRequest } from '../../helpers/helpers'
 import { favouriteActions } from './favourite-slice'
 
+const firebaseUrl = process.env.REACT_APP_FIREBASE_URL
+
 export const fetchFavourites = (userId) => {
      return async (dispatch) => {
           const responseData = await sendRequest(
-               `https://moviemissile-a309e-default-rtdb.firebaseio.com/${userId}/favourites.json`,
+               `${firebaseUrl}${userId}/favourites.json`,
                null,
                'Failed to fetch your favourite movies!'
           )
@@ -21,7 +23,7 @@ export const fetchFavourites = (userId) => {
 export const addToFavourites = (userId, movie) => {
      return async (dispatch) => {
           await sendRequest(
-               `https://moviemissile-a309e-default-rtdb.firebaseio.com/${userId}/favourites/${movie.id}.json`,
+               `${firebaseUrl}${userId}/favourites/${movie.id}.json`,
                {
                     method: 'PUT',
                     body: JSON.stringify(movie)
@@ -35,7 +37,7 @@ export const addToFavourites = (userId, movie) => {
 export const removeFromFavourites = (userId, movieId) => {
      return async (dispatch) => {
           await sendRequest(
-               `https://moviemissile-a309e-default-rtdb.firebaseio.com/${userId}/favourites/${movieId}.json`,
+               `${firebaseUrl}${userId}/favourites/${movieId}.json`,
                {
                     method: 'DELETE'
                },

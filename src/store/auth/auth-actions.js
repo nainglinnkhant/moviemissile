@@ -3,14 +3,15 @@ import { sendRequest } from '../../helpers/helpers'
 import { fetchFavourites } from '../favourite/favourite-actions'
 import { fetchWatchlist } from '../watchlist/watchlist-actions'
 
-const apiKey = 'AIzaSyDiOA8eSYn4FOQU8XLE1x6BlOFUKy7fWIo'
+const firebaseUrl = process.env.REACT_APP_FIREBASE_URL
+const firebaseApiKey = process.env.REACT_APP_FIREBASE_API_KEY
 
 export const authenticate = (username, email, password, authMode) => {
      return async (dispatch) => {
-          let url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`
+          let url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${firebaseApiKey}`
 
           if(authMode === 'Sign Up') {
-               url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`
+               url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${firebaseApiKey}`
           }
 
           const errorMsg = authMode === 'Login' 
@@ -35,7 +36,7 @@ export const authenticate = (username, email, password, authMode) => {
           
           if(authMode === 'Sign Up') {
                await sendRequest(
-                    `https://moviemissile-a309e-default-rtdb.firebaseio.com/${responseData.localId}.json`,
+                    `${firebaseUrl}${responseData.localId}.json`,
                     {
                          method: 'PUT',
                          body: JSON.stringify({
@@ -50,14 +51,14 @@ export const authenticate = (username, email, password, authMode) => {
 
           if(authMode === 'Login') {
                fetchedUsername = await sendRequest(
-                    `https://moviemissile-a309e-default-rtdb.firebaseio.com/${responseData.localId}/username.json`,
+                    `${firebaseUrl}${responseData.localId}/username.json`,
                     null,
                     'Failed to connect to server.'
                )
           }
 
-          localStorage.setItem('userId', responseData.localId)
-          localStorage.setItem('username', username || fetchedUsername)
+          localStorage.setItem('moviemissile-userId', responseData.localId)
+          localStorage.setItem('moviemissile-username', username || fetchedUsername)
           
           dispatch(authActions.authenticate(responseData.localId))
           dispatch(authActions.setUsername(username || fetchedUsername))

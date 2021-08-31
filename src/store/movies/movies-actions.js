@@ -1,7 +1,7 @@
 import { sendRequest } from '../../helpers/helpers'
 import { moviesActions } from './movies-slice'
 
-const apiKey = '5b9e66d672af4b02f4004c0c212c488f'
+const apiKey = process.env.REACT_APP_API_KEY
 
 export const fetchMovies = (page = 1) => {
      return async (dispatch) => {

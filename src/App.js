@@ -17,11 +17,11 @@ import { fetchWatchlist } from './store/watchlist/watchlist-actions'
 
 function App() {
      const dispatch = useDispatch()
-     const userId = useSelector(state => state.auth.userId) || localStorage.getItem('userId')
+     const userId = useSelector(state => state.auth.userId) || localStorage.getItem('moviemissile-userId')
 
      useEffect(() => {
-          const userId = localStorage.getItem('userId')
-          const username = localStorage.getItem('username')
+          const userId = localStorage.getItem('moviemissile-userId')
+          const username = localStorage.getItem('moviemissile-username')
           
           if(userId && username) {
                dispatch(authActions.authenticate(userId))

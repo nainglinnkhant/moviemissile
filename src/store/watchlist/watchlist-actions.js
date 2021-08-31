@@ -1,10 +1,12 @@
 import { sendRequest } from '../../helpers/helpers'
 import { watchlistActions } from './watchlist-slice'
 
+const firebaseUrl = process.env.REACT_APP_FIREBASE_URL
+
 export const fetchWatchlist = (userId) => {
      return async (dispatch) => {
           const responseData = await sendRequest(
-               `https://moviemissile-a309e-default-rtdb.firebaseio.com/${userId}/watchlist.json`,
+               `${firebaseUrl}${userId}/watchlist.json`,
                null,
                'Failed to fetch your watchlist!'
           )
@@ -21,7 +23,7 @@ export const fetchWatchlist = (userId) => {
 export const addToWatchlist = (userId, movie) => {
      return async (dispatch) => {
           await sendRequest(
-               `https://moviemissile-a309e-default-rtdb.firebaseio.com/${userId}/watchlist/${movie.id}.json`,
+               `${firebaseUrl}${userId}/watchlist/${movie.id}.json`,
                {
                     method: 'PUT',
                     body: JSON.stringify(movie)
@@ -35,7 +37,7 @@ export const addToWatchlist = (userId, movie) => {
 export const removeFromWatchlist = (userId, movieId) => {
      return async (dispatch) => {
           await sendRequest(
-               `https://moviemissile-a309e-default-rtdb.firebaseio.com/${userId}/watchlist/${movieId}.json`,
+               `${firebaseUrl}${userId}/watchlist/${movieId}.json`,
                {
                     method: 'DELETE'
                },
