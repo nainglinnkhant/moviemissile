@@ -2,8 +2,8 @@ import { useSelector } from 'react-redux'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 
 import { formatNumber, generateProfile } from '../../helpers/helpers'
-import fallback from '../../assets/fallback-img.jpg'
 import styles from './MovieCast.module.css'
+import MovieCastItem from './MovieCastItem'
 
 const Casts = (props) => {
      const history = useHistory()
@@ -32,18 +32,7 @@ const Casts = (props) => {
                     <h5 className="fw-bold mb-3">Cast</h5>
                     <ul className={styles.scroller}>
                          {casts.slice(0, 9).map(cast => (
-                              <li key={cast.id} className={styles['list-item']}>
-                                   <div className={styles['cast-img']}>
-                                        <object data={generateProfile(cast.profile_path)} type="image/jpg">
-                                             <img src={fallback} alt={cast.name} />
-                                        </object>
-                                   </div>
-
-                                   <div className="py-2 px-2">
-                                        <p className="mb-0 fw-bold">{cast.name}</p>
-                                        <p className="mb-0">{cast.character}</p>
-                                   </div>
-                              </li>
+                              <MovieCastItem cast={cast} />
                          ))}
 
                          {casts.length > 9 && (

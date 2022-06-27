@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
@@ -58,6 +59,15 @@ const Movie = (props) => {
           }
      }
 
+     useEffect(() => {
+         const handleImageLoaded = () => image.src = poster
+
+         const image = document.getElementById(props.id)
+         image.addEventListener('load', handleImageLoaded)
+
+         return () => image.removeEventListener('load', handleImageLoaded)
+     }, [props.id, poster])
+
      return (
           <div className={`col text-center ${styles.movie}`}>
                <div className={`${styles.poster} position-relative d-inline-block`}>
@@ -85,13 +95,21 @@ const Movie = (props) => {
                          </ul>
                     </div>
 
-                    <object data={poster} type="image/jpg" className="img-fluid" onClick={selectMovie}>
+                    <img
+                         id={props.id}
+                         src={fallback}
+                         alt={props.title}
+                         className="img-fluid mb-2"
+                         onClick={selectMovie}
+                    />
+
+                    {/* <object data={poster} type="image/jpg" className="img-fluid" onClick={selectMovie}>
                          <img
                               src={fallback}
                               alt={props.title}
                               className="img-fluid mb-2"
                          />
-                    </object>
+                    </object> */}
                </div>
 
                <div>
