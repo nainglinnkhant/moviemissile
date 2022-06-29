@@ -1,13 +1,13 @@
+import { useEffect, useState } from 'react'
 import { generateProfile } from '../../helpers/helpers'
 import fallback from '../../assets/fallback-img.jpg'
 import styles from './CastItem.module.css'
-import { useEffect } from 'react'
 
-const CastItem = (props) => {
-     const { cast } = props
+const CastItem = ({ cast }) => {
+     const [image, setImage] = useState(fallback)
 
      useEffect(() => {
-        const handleImageLoaded = () => image.src = generateProfile(cast.profile_path)
+        const handleImageLoaded = () => setImage(generateProfile(cast.profile_path))
 
          const image = document.getElementById(cast.id)
          image.addEventListener('load', handleImageLoaded)
@@ -19,7 +19,7 @@ const CastItem = (props) => {
           <div className="col">
                <div className={styles['cast-item']}>
                     <div className={styles['cast-img']}>
-                         <img id={cast.id} src={fallback} alt={cast.name} />
+                         <img id={cast.id} src={image} alt={cast.name} />
                          
                          {/* <object data={generateProfile(cast.profile_path)} type="image/jpg">
                               <img src={fallback} alt={cast.name} />

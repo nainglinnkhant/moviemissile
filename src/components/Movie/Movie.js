@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
@@ -59,8 +59,10 @@ const Movie = (props) => {
           }
      }
 
+     const [image, setImage] = useState(fallback)
+
      useEffect(() => {
-         const handleImageLoaded = () => image.src = poster
+         const handleImageLoaded = () => setImage(poster)
 
          const image = document.getElementById(props.id)
          image.addEventListener('load', handleImageLoaded)
@@ -97,7 +99,7 @@ const Movie = (props) => {
 
                     <img
                          id={props.id}
-                         src={fallback}
+                         src={image}
                          alt={props.title}
                          className="img-fluid mb-2"
                          onClick={selectMovie}
