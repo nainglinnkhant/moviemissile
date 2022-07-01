@@ -1,8 +1,9 @@
-.movie .poster, .movie .poster img, .movie .poster object {
+.movie .poster {
      border-radius: 15px;
 }
-.movie .poster img, .movie .poster object {
+.movie .poster img {
      cursor: pointer;
+     border-radius: 15px;
 }
 .movie .poster .dropdown {
      position: absolute;
@@ -15,6 +16,7 @@
      background: rgba(255, 255, 255, 0.5);
      color: #353535;
      line-height: 20px;
+     z-index: 1;
 }
 .movie .poster .dropdown:hover {
      color: #ffffff;
@@ -35,6 +37,10 @@
 .movie .poster i {
      font-size: 0.9rem;
 }
+.movie .image-container {
+    overflow: hidden;
+    border-radius: 14px;
+}
 .movie span {
      font-size: 0.85rem;
      display: block;
@@ -48,14 +54,14 @@
      color: #6c757d;
 }
 @media (max-width: 576px) {
-     .movie .poster img, .movie .poster object {
-          height: 200px;
-          width: auto;
+     .movie .poster img {
+          height: 200px !important;
+          width: auto !important;
      }
 }
 @media (min-width: 1200px) {
-     .movie .poster img, .movie .poster object {
-          height: 230px;
-          width: auto;
+     .movie .poster img {
+          height: 230px !important;
+          width: auto !important;
      }
 }

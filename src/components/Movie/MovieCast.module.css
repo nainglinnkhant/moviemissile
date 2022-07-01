@@ -53,9 +53,10 @@
 .cast-img {
      height: 175px;
      overflow: hidden;
+     border-top-left-radius: 4px;
+     border-top-right-radius: 4px;
 }
-.scroller img, .scroller object {
-     width: 100%;
+.scroller img {
      border-top-left-radius: 5px;
      border-top-right-radius: 5px;
 }

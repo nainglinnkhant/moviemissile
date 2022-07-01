@@ -32,7 +32,7 @@ const Casts = (props) => {
                     <h5 className="fw-bold mb-3">Cast</h5>
                     <ul className={styles.scroller}>
                          {casts.slice(0, 9).map(cast => (
-                              <MovieCastItem cast={cast} />
+                              <MovieCastItem key={cast.id} cast={cast} />
                          ))}
 
                          {casts.length > 9 && (

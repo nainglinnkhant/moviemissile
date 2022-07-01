@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { Image } from '@mantine/core';
 
 import fallback from '../../assets/poster-fallback.jpg'
 import { addToFavourites, removeFromFavourites } from '../../store/favourite/favourite-actions'
@@ -59,17 +59,6 @@ const Movie = (props) => {
           }
      }
 
-     const [image, setImage] = useState(fallback)
-
-     useEffect(() => {
-         const handleImageLoaded = () => setImage(poster)
-
-         const image = document.getElementById(props.id)
-         image.addEventListener('load', handleImageLoaded)
-
-         return () => image.removeEventListener('load', handleImageLoaded)
-     }, [props.id, poster])
-
      return (
           <div className={`col text-center ${styles.movie}`}>
                <div className={`${styles.poster} position-relative d-inline-block`}>
@@ -97,21 +86,14 @@ const Movie = (props) => {
                          </ul>
                     </div>
 
-                    <img
-                         id={props.id}
-                         src={image}
-                         alt={props.title}
-                         className="img-fluid mb-2"
-                         onClick={selectMovie}
-                    />
-
-                    {/* <object data={poster} type="image/jpg" className="img-fluid" onClick={selectMovie}>
-                         <img
-                              src={fallback}
-                              alt={props.title}
-                              className="img-fluid mb-2"
+                    <div className={styles['image-container']}>
+                         <Image
+                             src={poster}
+                             alt={props.title}
+                             withPlaceholder
+                             onClick={selectMovie}
                          />
-                    </object> */}
+                    </div>
                </div>
 
                <div>

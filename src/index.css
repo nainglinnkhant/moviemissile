@@ -41,3 +41,13 @@ code {
      background: #D1D5DB;
      border-radius: 5px;
 }
+
+.mantine-Image-root {
+     height: 100%;
+}
+.mantine-Image-figure {
+     height: 100%;
+}
+.mantine-Image-imageWrapper {
+     height: 100%;
+}
