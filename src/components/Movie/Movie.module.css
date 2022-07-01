@@ -1,8 +1,4 @@
-.movie .poster {
-     border-radius: 15px;
-}
-.movie .poster img {
-     cursor: pointer;
+.movie .poster, .movie .poster img {
      border-radius: 15px;
 }
 .movie .poster .dropdown {
@@ -38,8 +34,9 @@
      font-size: 0.9rem;
 }
 .movie .image-container {
-    overflow: hidden;
-    border-radius: 14px;
+     overflow: hidden;
+     border-radius: 14px;
+     cursor: pointer;
 }
 .movie span {
      font-size: 0.85rem;
