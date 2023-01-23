@@ -1,4 +1,5 @@
-.movie .poster, .movie .poster img {
+.movie .poster img {
+     height: 210px;
      border-radius: 15px;
 }
 .movie .poster .dropdown {
@@ -35,8 +36,12 @@
 }
 .movie .image-container {
      overflow: hidden;
-     border-radius: 14px;
      cursor: pointer;
+}
+.movie .skeleton {
+     height: 210px;
+     width: calc(210px * 2 / 3);
+     border-radius: 15px;
 }
 .movie span {
      font-size: 0.85rem;
@@ -52,13 +57,21 @@
 }
 @media (max-width: 576px) {
      .movie .poster img {
-          height: 200px !important;
-          width: auto !important;
+          height: 200px;
+          width: auto;
+     }
+     .movie .skeleton {
+          height: 200px;
+          width: calc(200px * 2 / 3);
      }
 }
 @media (min-width: 1200px) {
      .movie .poster img {
-          height: 230px !important;
-          width: auto !important;
+          height: 230px;
+          width: auto;
+     }
+     .movie .skeleton {
+          height: 230px;
+          width: calc(230px * 2 / 3);
      }
 }

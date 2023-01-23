@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { Image } from '@mantine/core';
 
+import Image from '../Elements/Image'
 import fallback from '../../assets/poster-fallback.jpg'
 import { addToFavourites, removeFromFavourites } from '../../store/favourite/favourite-actions'
 import { addToWatchlist, removeFromWatchlist } from '../../store/watchlist/watchlist-actions'
@@ -90,8 +90,8 @@ const Movie = (props) => {
                          <Image
                              src={poster}
                              alt={props.title}
-                             withPlaceholder
                              onClick={selectMovie}
+                             skeletonClassName={styles.skeleton}
                          />
                     </div>
                </div>
