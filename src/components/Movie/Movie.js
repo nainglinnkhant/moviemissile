@@ -91,7 +91,6 @@ const Movie = (props) => {
                              src={poster}
                              alt={props.title}
                              onClick={selectMovie}
-                             skeletonClassName={styles.skeleton}
                          />
                     </div>
                </div>
