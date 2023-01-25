@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styles from './Image.module.css'
 
 interface ImageProps extends React.HTMLProps<HTMLImageElement> {
+    width?: number
+    height?: number
     skeleton?: boolean
     skeletonClassName?: string
 }
@@ -9,7 +11,7 @@ interface ImageProps extends React.HTMLProps<HTMLImageElement> {
 const Image = (props: ImageProps) => {
     const [imageLoaded, setImageLoaded] = useState(false)
     
-    const { skeleton = true, skeletonClassName, ...imageProps } = props
+    const { skeleton = true, skeletonClassName, width, height, ...imageProps } = props
 
     const imageClass = imageLoaded ? 'd-block' : 'd-none'
 
@@ -19,11 +21,15 @@ const Image = (props: ImageProps) => {
                 {...imageProps}
                 alt={imageProps.alt}
                 onLoad={() => setImageLoaded(true)}
-                className={skeleton ? imageClass : ''}
+                className={`${styles.image} ${skeleton ? imageClass : ''}`}
+                style={{ width, height }}
             />
 
             {skeleton && !imageLoaded && (
-                <div className={`${styles.skeleton} ${skeletonClassName}`} />
+                <div
+                    className={`${styles.skeleton} ${skeletonClassName}`}
+                    style={{ width, height }}
+                />
             )}
         </>
     )
