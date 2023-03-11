@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+
 import fallback from '../../assets/poster-fallback.jpg'
 import styles from './Image.module.css'
 
@@ -15,9 +16,29 @@ const Image = (props: ImageProps) => {
 
     const imageRef = useRef<HTMLImageElement>(null)
     
-    const { skeleton = true, skeletonClassName, width, height, ...imageProps } = props
+    const {
+        skeleton = true,
+        skeletonClassName = '',
+        className = '',
+        width = '',
+        height = '',
+        style = {},
+        ...imageProps
+    } = props
 
     const imageClass = imageLoaded ? 'd-block' : 'd-none'
+
+    const extractImageDimensions = (style: React.CSSProperties) => {
+        const dimensionKeys = ['width', 'height']
+        const keys = Object.entries(style)
+        const dimensionEntries = keys.filter(key => dimensionKeys.includes(key[0]))
+
+        if (!dimensionEntries.length) return null
+        
+        return Object.fromEntries(dimensionEntries)
+    }
+
+    const skeletonDimensions = extractImageDimensions(style) || { width, height }
 
     useEffect(() => {
         const handleImageError = () => setImageSrc(fallback)
@@ -33,18 +54,19 @@ const Image = (props: ImageProps) => {
         <>
             <img
                 ref={imageRef}
+                loading='lazy'
                 {...imageProps}
                 src={imageSrc}
                 alt={imageProps.alt}
                 onLoad={() => setImageLoaded(true)}
-                className={`${styles.image} ${skeleton ? imageClass : ''} ${imageProps.className}`}
-                style={{ width, height }}
+                className={`${styles.image} ${skeleton ? imageClass : ''} ${className}`}
+                style={{ width, height, ...style }}
             />
 
             {skeleton && !imageLoaded && (
                 <div
                     className={`${styles.skeleton} ${skeletonClassName}`}
-                    style={{ width, height }}
+                    style={skeletonDimensions}
                 />
             )}
         </>
