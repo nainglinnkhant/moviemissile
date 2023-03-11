@@ -1,5 +1,4 @@
-import { Image } from '@mantine/core'
-
+import Image from '../Elements/Image'
 import { generateProfile } from '../../helpers/helpers'
 import styles from './CastItem.module.css'
 
@@ -11,7 +10,6 @@ const CastItem = ({ cast }) => {
                          <Image
                              src={generateProfile(cast.profile_path)}
                              alt={cast.name}
-                             withPlaceholder
                          />
                     </div>
 
