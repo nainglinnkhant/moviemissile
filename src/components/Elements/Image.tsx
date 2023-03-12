@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 
-import fallback from '../../assets/poster-fallback.jpg'
+import FallbackIcon from './FallbackIcon'
 import styles from './Image.module.css'
 
 interface ImageProps extends React.HTMLProps<HTMLImageElement> {
@@ -12,7 +12,7 @@ interface ImageProps extends React.HTMLProps<HTMLImageElement> {
 
 const Image = (props: ImageProps) => {
     const [imageLoaded, setImageLoaded] = useState(false)
-    const [imageSrc, setImageSrc] = useState(props.src)
+    const [error, setError] = useState(false)
 
     const imageRef = useRef<HTMLImageElement>(null)
     
@@ -23,40 +23,39 @@ const Image = (props: ImageProps) => {
         width = '',
         height = '',
         style = {},
+        onClick,
         ...imageProps
     } = props
 
     const imageClass = imageLoaded ? 'd-block' : 'd-none'
 
-    const extractImageDimensions = (style: React.CSSProperties) => {
-        const dimensionKeys = ['width', 'height']
-        const keys = Object.entries(style)
-        const dimensionEntries = keys.filter(key => dimensionKeys.includes(key[0]))
-
-        if (!dimensionEntries.length) return null
-        
-        return Object.fromEntries(dimensionEntries)
-    }
-
-    const skeletonDimensions = extractImageDimensions(style) || { width, height }
+    if (error) return (
+        <div
+            className={styles.fallback}
+            onClick={onClick}
+            style={{ width, height }}
+        >
+            <FallbackIcon />
+        </div>
+    )
 
     return (
         <>
             <img
                 ref={imageRef}
                 {...imageProps}
-                src={imageSrc}
                 alt={imageProps.alt}
                 onLoad={() => setImageLoaded(true)}
-                onError={() => setImageSrc(fallback)}
+                onError={() => setError(true)}
                 className={`${styles.image} ${skeleton ? imageClass : ''} ${className}`}
                 style={{ width, height, ...style }}
             />
 
-            {skeleton && !imageLoaded && (
+            {skeleton && !imageLoaded && !error && (
                 <div
                     className={`${styles.skeleton} ${skeletonClassName}`}
-                    style={skeletonDimensions}
+                    onClick={onClick}
+                    style={{ width, height }}
                 />
             )}
         </>
