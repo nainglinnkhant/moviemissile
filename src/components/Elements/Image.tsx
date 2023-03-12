@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import fallback from '../../assets/poster-fallback.jpg'
 import styles from './Image.module.css'
@@ -40,25 +40,15 @@ const Image = (props: ImageProps) => {
 
     const skeletonDimensions = extractImageDimensions(style) || { width, height }
 
-    useEffect(() => {
-        const handleImageError = () => setImageSrc(fallback)
-
-        const imageElement = imageRef.current
-        
-        imageElement?.addEventListener('error', handleImageError)
-
-        return () => imageElement?.removeEventListener('error', handleImageError)
-    }, [])
-
     return (
         <>
             <img
                 ref={imageRef}
-                loading='lazy'
                 {...imageProps}
                 src={imageSrc}
                 alt={imageProps.alt}
                 onLoad={() => setImageLoaded(true)}
+                onError={() => setImageSrc(fallback)}
                 className={`${styles.image} ${skeleton ? imageClass : ''} ${className}`}
                 style={{ width, height, ...style }}
             />
