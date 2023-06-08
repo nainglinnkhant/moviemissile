@@ -45,6 +45,7 @@ const Image = (props: ImageProps) => {
                 ref={imageRef}
                 {...imageProps}
                 alt={imageProps.alt}
+                onClick={onClick}
                 onLoad={() => setImageLoaded(true)}
                 onError={() => setError(true)}
                 className={`${styles.image} ${skeleton ? imageClass : ''} ${className}`}
